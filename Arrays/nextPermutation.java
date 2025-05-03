@@ -5,6 +5,7 @@ public class nextPermutation {
 
         int pivot = -1;
 
+        //finding the pivot  ( where arr[i] < arr[i+1]) 
         for(int i = nums.length - 2 ; i >=0; i-- ){
             if(nums[i] < nums[i+1]){
                 pivot = i;
@@ -12,11 +13,28 @@ public class nextPermutation {
             }
         }
 
+        //IN A CASE -  where we couldn't find the pivot(this means that we are at the last lexicographic value), therefore 
+        //next value must be same as the first lexicographic value -> therefore reverse the array
+        //checking if pivot is still -1 -> if soo, reverse the array
+
+        if(pivot==-1){
+            int n = nums.length-1;
+            for(int i=0; i<= n ;i++){
+                int temp = nums[i];
+                nums[i]= nums[n];
+                nums[n]= temp; 
+                n--;
+               
+            }
+            return nums;
+       }
+
+
         //now finding the right most element that is greater that pivot to swap
     
-        int lastnum=-1;
 
-        for(int i = nums.length - 1 ; i >=0; i-- ){
+        for(int i = nums.length - 1 ; i > 0; i-- ){
+
             if(nums[i]> nums[pivot]){
                 int temp = nums[pivot];
                 nums[pivot]= nums[i];
@@ -45,7 +63,7 @@ public class nextPermutation {
     }
 
     public static void main(String[] args) {
-        int[] nums = {3,2,1};
+        int[] nums = {1,2,3,6,5,4};
         int[] fixed = nextPermutation(nums);
 
         for(int i : fixed){
