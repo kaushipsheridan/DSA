@@ -5,34 +5,33 @@ public class maximumProductSubarray {
         //BRUTE FORCE - NESTED FOR LOOP
 
         //BETTER SOLUTION - 
+        int prodfromleft=1;
+        int prodfromright=1;
+        int max=nums[0];
+        int n= nums.length;
 
-        //handle exceptions such as (0,5);
-        int test=0;
-        for(int i: nums){
-            test = Math.max(i, test);
-        }
+        for(int i=0;i<nums.length;i++){
 
-        int maxp=Integer.MIN_VALUE;
-        int minp=Integer.MAX_VALUE;    
-        int currentp=1;
-
-        for(int i =0;i<nums.length;i++){
-
-            currentp *= nums[i];
-
-            maxp = Math.max(maxp, currentp);
-
-            if(currentp<0){
-                currentp=0;
+            if(prodfromleft==0){
+                prodfromleft=1;
             }
+
+            if(prodfromright==0){
+                prodfromright=1;
+
+            }
+
+            prodfromleft*=nums[i];
+            prodfromright*=nums[n-1-i];
+
+            max=Math.max(max,Math.max(prodfromleft, prodfromright));
+
         }
-        
-        return maxp;
 
-
+        return max;
     }
     public static void main(String[] args) {
-        int[] nums = {-2,0,-1};
+        int[] nums = {-3,0,1,-2};
        System.out.println(maxProduct(nums));
     }
 }
