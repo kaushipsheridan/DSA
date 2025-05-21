@@ -18,6 +18,8 @@ public class searchInSortedArray {
 
             //first check if the left half is sorted or right half is sorted
             if(nums[mid] >= nums[left]){
+
+                
                 //if this condition is true -> its LEFT SORTED
 
                 //therefore applying BINARY SORT ON THE LEFT
