@@ -23,15 +23,16 @@ public class quickSort {
 
                 }
         }
+
             // NOW adding PIVOT to appropriate place an returning its index
 
-                    //increase pivot index by one to make space
-                    pivotIndex++;
-                    
-                    //swap arr[end](which is actually pivot) with arr[pivotIndex]
-                    int temp2=arr[end];
-                    arr[end]=arr[pivotIndex];
-                    arr[pivotIndex]=temp2; 
+                //increase pivot index by one to make space
+                pivotIndex++;
+                
+                //swap arr[end](which is actually pivot) with arr[pivotIndex]
+                int temp2=arr[end];
+                arr[end]=arr[pivotIndex];
+                arr[pivotIndex]=temp2; 
 
         //now that pivot is at its actual place, returning its index
         return pivotIndex;
@@ -52,7 +53,6 @@ public class quickSort {
 
         } 
        
-        
     }
 
     public static void main(String[] args) {
@@ -62,11 +62,7 @@ public class quickSort {
         for(int i:arr){
             System.out.println(i);
         }
-
-        
-
-
-        
+   
     }
     
 }
