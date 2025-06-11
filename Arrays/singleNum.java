@@ -4,6 +4,7 @@ public class singleNum {
 
         int result=0;
 
+        //Concept of XOR, check in notes
         for(int i:nums){
             result = result^i;
         }
