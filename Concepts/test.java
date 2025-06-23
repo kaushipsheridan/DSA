@@ -4,7 +4,7 @@ public class test {
 
     public static void main(String[] args) {
 
-     int hehe = (10/3);
+     int hehe = (5/3);
      System.out.println(hehe);
     }
     
