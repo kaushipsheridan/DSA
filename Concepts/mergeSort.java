@@ -5,7 +5,6 @@ package Concepts;
 public class mergeSort {
 
 
-
     //DIVIDE - until every element in the array is a seperate array
     public static void merge(int[] arr,int start,int end){
 
@@ -26,8 +25,6 @@ public class mergeSort {
         
 
     } 
-
-
 
 
     //CONQUER - combine 2 arrays in sorted order
@@ -53,18 +50,26 @@ public class mergeSort {
 
             }
 
+
+
+            
+                        //EDGE CASE 
+                        
         //If -> LEFT = 1,2,3 and RIGHT = 4,5,6 therefore only left will be passed and right will remain as it is, to solve this 
         //we have to push rest elements of RIGHT AND LEFT arrays
 
-            //Pushing rest of LEFT array
+            //Pushing rest of LEFT array - since left's largest element will still be smaller than right's smallest element
             while(i<=mid){
                 temp[k++]=arr[i++];
                
             }
-            //Pushing rest of RIGHT array
+            //Pushing rest of RIGHT array - pushing rest of right!
             while(j<=end){
                 temp[k++]=arr[j++];
             }
+
+
+
 
         
        //Now Copying all the Temp array values to Original array

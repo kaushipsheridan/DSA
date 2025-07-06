@@ -22,6 +22,7 @@ public class mergeSortedArray {
                 break;
             }
         }
+        
         //SORTTING ARR 1 AND ARR 2
         Arrays.sort(arr1);
         Arrays.sort(arr2);
