@@ -18,8 +18,6 @@ public class minInRotataedSortedArray {
     //     return min;
     // }
 
-    
-
     // Optimal approach - Bubble sort in the sorted half - Time Complexity - O(log n)
     public static int findmin(int[] nums){
 
@@ -32,7 +30,6 @@ public class minInRotataedSortedArray {
 
             //Gets us mid point
             int mid = left + (right-left)/2;
-
 
             if(nums[mid]<= nums[right]){
                 right = mid;

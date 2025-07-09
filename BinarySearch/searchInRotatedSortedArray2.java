@@ -10,13 +10,15 @@ public class searchInRotatedSortedArray2 {
 
         if (nums[mid] == target) return true;
 
-        // If duplicates make it unclear which half is sorted
+        // If duplicates make it unclear which half is sorted - SKIP THEM
         if (nums[left] == nums[mid] && nums[mid] == nums[right]) {
             left++;
             right--;
         } 
+
         // Left half is sorted
         else if (nums[left] <= nums[mid]) {
+            //BS on LEFT
             if (target >= nums[left] && target < nums[mid]) {
                 right = mid - 1;
             } else {
@@ -25,6 +27,8 @@ public class searchInRotatedSortedArray2 {
         } 
         // Right half is sorted
         else {
+
+            //BS ON RIGHT
             if (target > nums[mid] && target <= nums[right]) {
                 left = mid + 1;
             } else {
@@ -36,52 +40,6 @@ public class searchInRotatedSortedArray2 {
     return false;
 }
 
-    public static boolean BS(int[] nums, int left, int right, int target){
-
-        while(left<=right){
-
-            int mid = left + (right-left)/2;
-
-            if(nums[mid]==target){
-                return true;
-            }
-
-            //now we dont know what section of the input array here will be sorted 
-            //therfore 
-
-            if(nums[left]<=nums[mid]){
-
-                //ARRAY IS LEFT SORTED
-                    //therfore target is in the right half
-                    if(target>=nums[left] && target <= nums[mid]){
-                        right = mid-1;
-                    }else{
-                    left = mid+1;
-                    }
-
-            }else if ( nums[left]> nums[mid]){
-
-                //ARRAY IS RIGHT SORTED
-                 //therfore target is in the right half
-                if(target>=nums[mid] && target <= nums[right]){
-                    left = mid+1;                  
-                }else{
-                     right = mid-1;   
-                }
-
-                // nums[left] == nums[mid], cannot decide, skip duplicate
-            }else{
-                left++;
-            }
-          
-            
-        }
-
-        return false;
-
-
-        
-    }
 
     public static void main(String[] args) {
 
