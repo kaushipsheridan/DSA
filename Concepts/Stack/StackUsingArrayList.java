@@ -1,4 +1,4 @@
-package Concepts;
+package Concepts.Stack;
 
 import java.util.ArrayList;
 

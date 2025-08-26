@@ -15,7 +15,7 @@ public class sumofBeautyOfAllSubstring {
 
             for(int j=i;j<s.length();j++){
                 
-                freq[s.charAt(j)-'a']++;
+                freq[s.charAt(j) -'a']++;
 
                 int minFreq=Integer.MAX_VALUE;
                 int maxFreq=Integer.MIN_VALUE;

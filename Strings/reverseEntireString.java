@@ -13,7 +13,11 @@ public class reverseEntireString {
 
             if(s.charAt(i)!=' '){
                 String word = wordMaker(s, i);
-                sb.append(word+ "");
+                sb.append(word).append(" ");
+
+                //now that we have addded the last word, we gotta remove the rest of the word(*will also reduce TC --heheheh)
+                i-= word.length()-1;
+
             }  else{
                 continue;
             }  
@@ -21,18 +25,19 @@ public class reverseEntireString {
         }
 
 
-        return "";
+        return sb.toString().trim();
     }
     public static String wordMaker(String s , int indexStart){
 
         int j= indexStart;
 
-        while(s.charAt(j-1)==' '){
+        while(j>0 && s.charAt(j-1)!=' '){
             j--;
         }
 
-        return s.substring(j,indexStart);
+        return s.substring(j,indexStart+1);
     }
+    
     public static void main(String[] args) {
         String s = "   hello world  ";
         System.out.println(reversed(s));

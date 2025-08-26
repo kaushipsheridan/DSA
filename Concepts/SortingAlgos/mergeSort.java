@@ -1,4 +1,4 @@
-package Concepts;
+package Concepts.SortingAlgos;
 
 //MERGE SORT - DIVIDE AND CONQUER
 

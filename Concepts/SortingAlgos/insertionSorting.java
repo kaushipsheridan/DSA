@@ -1,4 +1,4 @@
-package Concepts;
+package Concepts.SortingAlgos;
 
 public class insertionSorting {
 

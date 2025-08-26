@@ -1,4 +1,4 @@
-package Concepts;
+package Concepts.SortingAlgos;
 
 import java.util.*;
 
