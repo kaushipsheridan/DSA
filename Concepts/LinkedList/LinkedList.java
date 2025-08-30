@@ -22,7 +22,7 @@ public class LinkedList {
 
     }
 
-    //function to convert to LinkedList
+    //function to CONVERTING TO LINKED LIST
 
     public static Node convert2LL(int[] arr ){
 
@@ -44,7 +44,8 @@ public class LinkedList {
         return head;
 
     }
-    
+
+
 
     public static void main(String[] args) {
 
@@ -59,6 +60,40 @@ public class LinkedList {
 
         Node head = convert2LL(arr);
         System.out.println(head.data);
+
+
+        //TRAVERSE IN A LINKED LIST(with couuning)(with SEARCHING AN ELEMENT IN A LL//
+        Node temp = head;
+        
+        //FOR COUNTING
+        int counter =0;
+
+        //FOR SEARCHING AN ELEMENT
+        int val =17;
+        boolean isPresent=false;
+
+        while(temp!=null){
+            System.out.print(temp.data + " "); //prints -> 2 5 8 7  
+
+            //counting elements
+            counter++;
+
+            //searching if present
+            if(temp.data==val){
+                isPresent=true;
+            }
+            temp=temp.next;
+        }
+                                                 System.out.println();
+        System.out.println(counter+ " is the counter");
+        System.out.println("Element present status -> "+ isPresent);
+
+
+        
+
+
+        
+
 
 
         
