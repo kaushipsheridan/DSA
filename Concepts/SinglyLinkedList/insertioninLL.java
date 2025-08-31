@@ -1,4 +1,4 @@
-package Concepts.LinkedList;
+package Concepts.SinglyLinkedList;
 
 public class insertioninLL {
 
