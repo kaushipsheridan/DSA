@@ -47,6 +47,26 @@ public class reverseADoublyLIsnkedList {
     }
 
     public static Node reverseDLL(Node head){
+
+        Node mover = head;
+        Node temp=null;
+
+
+        while(mover!=null){
+
+            //swap mover and temp's next AND prev
+            temp=mover.prev;
+            mover.prev=mover.next;
+            mover.next=temp;
+
+
+            //now moving mover back(because we swappaed)
+            mover=mover.prev;
+        }
+
+        return temp.prev;
+
+        
         
     }
 
