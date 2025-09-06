@@ -1,5 +1,7 @@
 package Concepts.DoublyLinkedList;
 
+import java.security.Key;
+
 public class insertionInDoublyLinkedList {
 
     public static class Node{
@@ -84,23 +86,66 @@ public class insertionInDoublyLinkedList {
     }
 
 
-    //
+    //Adding an Element before Kth Node in DLL
+    public static Node addNodeBeforeKthNode(Node head, int k){
+
+        if(head==null){ throw new IndexOutOfBoundsException("No kth node to add before!!!"+ k);}
+
+        if(head.next==null){
+            if(k!=1){
+                throw new IndexOutOfBoundsException("No kth node to add before!!!"+ k);
+            }else{
+                Node newHead= new Node(999,head,null);
+                head.prev=newHead;
+                return newHead;
+            }
+        }
+
+        // Case 1: Insert before the first node
+        if (k == 1) {
+            Node newHead = new Node(999, head, null);
+            head.prev = newHead;
+            return newHead; // new head of the list
+        }
 
 
+        //now that edge case is handled
+        //lets loop until k is reached and add in kth element
 
+        Node mover = head;
+        int count = 1 ;
+        Node temp = null;
 
+        while(mover!=null){
+            
+            if(count == k){
+                Node newNodeToAdd= new Node(999,mover,temp);
+                temp.next=newNodeToAdd;
+                mover.prev=newNodeToAdd; 
 
+                return head;
+            }
 
+            mover = mover.next;
+            temp = mover.prev;
 
+            count ++;
+        }
+
+        //if k is not found and no new node is added yett
+        //this means temp would still be null at this point 
+        if(temp==null){
+            throw new IndexOutOfBoundsException("No kth node to add before!!!"+ k);
+        }
+
+        return head;
+
+    }
 
     public static void main(String[] args) {
-
         int[] arr = {3,5,7,4,84};
         Node head = convertToDLL(arr);
-
-        head = insertNodeBeforeTailDLL(head);
-        
+        head = addNodeBeforeKthNode(head,3);
         print(head);
-        
     }
 }
