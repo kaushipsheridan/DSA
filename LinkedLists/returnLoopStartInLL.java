@@ -1,8 +1,8 @@
 package LinkedLists;
 
-public class medianOfSLL {
+public class returnLoopStartInLL {
 
-      public static class Node{
+    public static class Node{
 
         //VALUES
         int data; //data value
@@ -55,45 +55,59 @@ public class medianOfSLL {
         System.out.println();
     }
 
-    public static int MedianOfLinkedList(Node head){
+    public static Node findStartingPoint(Node head){
 
         Node slow = head;
         Node fast = head;
-
-        //IN ODD cases FAST can reach tail,
-        //In Even Cases FAST can reach null
-
-        //therfore while conditioning our while loop
-        // we limit fast in even cases first and then at odd  cases
+        
+        
         while(fast!=null && fast.next!=null){
             slow=slow.next;
-            fast=fast.next.next;
+            fast= fast.next.next;
+
+            //as soon as comman point is found 
+            if(slow==fast){
+                slow=head;
+
+                while(slow!=fast){
+                    slow=slow.next;
+                    fast=fast.next;
+                }
+
+               return slow; 
+            }s
+
         }
 
-        return slow.data;
 
-
+        return  null;
     }
 
-
     public static void main(String[] args) {
-
-        int[] arr = {2, 5, 8};
- 
-        // // Creating a new Node with the value from the array
-        // Node x = new Node(arr[0],null);
-
-        // // Printing location of x and the data stored in the Node x
-        // System.out.println(x);
-        // System.out.println(x.data);
+        
+        int[] arr = {2,5,8,9,23,65,21};
 
         Node head = convert2LL(arr);
 
-        int rel = MedianOfLinkedList(head);
+        //MAKING LOOPED LL
 
+        // // Create a LOOPED LL for testing
+        // Node temp = head;
+        // Node last = head;
 
-        System.out.println(rel);
-        
+        // // Move last to the end
+        // while (last.next != null) {
+        //     last = last.next;
+        // }
+
+        // // Example: connect last node back to head.next (node with value 5)
+        // last.next = head.next.next;
+
+        //print(head);   
+
+        Node hehe = findStartingPoint(head);
+
+        System.out.println(hehe.data);
     }
     
 }

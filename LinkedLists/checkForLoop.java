@@ -1,8 +1,9 @@
 package LinkedLists;
 
-public class medianOfSLL {
+public class checkForLoop {
 
-      public static class Node{
+    //NODE
+    public static class Node{
 
         //VALUES
         int data; //data value
@@ -21,16 +22,12 @@ public class medianOfSLL {
 
 
     }
-
      //function to CONVERTING TO LINKED LIST
-
     public static Node convert2LL(int[] arr ){
 
         //first we make head -> make it point to null( will update its pointer later)
         Node head = new Node(arr[0]);
-
         Node mover = head;
-
         for(int i=1;i<arr.length;i++){
             //add a new node (temp) , add next value of array and make it point to null
             Node temp = new Node(arr[i]);
@@ -38,14 +35,11 @@ public class medianOfSLL {
             mover.next=temp;
             ////update the last node 
             mover=temp;
-
         }
-
         return head;
-
     }
 
-    //PRINTING THE LL
+    //PRINTING  LL
     public static void print(Node head){
 
         while(head!=null){
@@ -55,45 +49,48 @@ public class medianOfSLL {
         System.out.println();
     }
 
-    public static int MedianOfLinkedList(Node head){
+    public static boolean checkLoopInLL(Node head){
+        
+        Node slow=head;
+        Node fast=head;
 
-        Node slow = head;
-        Node fast = head;
-
-        //IN ODD cases FAST can reach tail,
-        //In Even Cases FAST can reach null
-
-        //therfore while conditioning our while loop
-        // we limit fast in even cases first and then at odd  cases
         while(fast!=null && fast.next!=null){
             slow=slow.next;
             fast=fast.next.next;
+
+            if(fast!=null){
+                if(fast.next==slow || fast==slow){
+                return true;
+                }
+            }
+ 
         }
-
-        return slow.data;
-
-
+        
+        return false;
     }
 
 
     public static void main(String[] args) {
-
-        int[] arr = {2, 5, 8};
- 
-        // // Creating a new Node with the value from the array
-        // Node x = new Node(arr[0],null);
-
-        // // Printing location of x and the data stored in the Node x
-        // System.out.println(x);
-        // System.out.println(x.data);
+        int[] arr = {2,5,8,9,23,65,21};
 
         Node head = convert2LL(arr);
 
-        int rel = MedianOfLinkedList(head);
+        // Create a LOOPED LL for testing
+        Node temp = head;
+        Node last = head;
 
+        // Move last to the end
+        while (last.next != null) {
+            last = last.next;
+        }
 
-        System.out.println(rel);
-        
+        // Example: connect last node back to head.next (node with value 5)
+        last.next = head.next;
+
+        //print(head);   
+
+        boolean hehe = checkLoopInLL(head);
+
+        System.out.println(hehe);
     }
-    
 }

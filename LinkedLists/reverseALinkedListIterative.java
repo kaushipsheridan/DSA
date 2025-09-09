@@ -1,8 +1,11 @@
 package LinkedLists;
 
-public class medianOfSLL {
+import java.util.Stack;
 
-      public static class Node{
+public class reverseALinkedListIterative {
+
+    //NODE
+    public static class Node{
 
         //VALUES
         int data; //data value
@@ -21,16 +24,12 @@ public class medianOfSLL {
 
 
     }
-
      //function to CONVERTING TO LINKED LIST
-
     public static Node convert2LL(int[] arr ){
 
         //first we make head -> make it point to null( will update its pointer later)
         Node head = new Node(arr[0]);
-
         Node mover = head;
-
         for(int i=1;i<arr.length;i++){
             //add a new node (temp) , add next value of array and make it point to null
             Node temp = new Node(arr[i]);
@@ -38,14 +37,11 @@ public class medianOfSLL {
             mover.next=temp;
             ////update the last node 
             mover=temp;
-
         }
-
         return head;
-
     }
 
-    //PRINTING THE LL
+    //PRINTING  LL
     public static void print(Node head){
 
         while(head!=null){
@@ -55,44 +51,62 @@ public class medianOfSLL {
         System.out.println();
     }
 
-    public static int MedianOfLinkedList(Node head){
+    // //Brute Force : TC is O(n) SC is O(n)
+    // public static Node reverseItIterative(Node head){
 
-        Node slow = head;
-        Node fast = head;
+    //     Node temp = head;
+        
+    //     //first we input all of our node.data into a stack
+    //     Stack<Integer> st = new Stack<>();
 
-        //IN ODD cases FAST can reach tail,
-        //In Even Cases FAST can reach null
+    //     while(temp!=null){
+    //         st.push(temp.data);
+    //         temp=temp.next;
+    //     }
 
-        //therfore while conditioning our while loop
-        // we limit fast in even cases first and then at odd  cases
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
+    //     //now that stack is ready,lets pop every element back into the LL
+    //     temp=head;
+
+    //     while(temp!=null){
+    //         temp.data=st.pop();
+    //         temp=temp.next;
+    //     }
+
+    //     return head;
+    // }
+
+    public static Node reverseItIterative(Node head){
+        
+        Node back = null;
+        Node temp = head;
+
+        while(temp!=null){
+            //STORE FRONT
+           Node front=temp.next;
+           
+           //UPDATE POINTER FROM FRONT TO BACK
+           temp.next=back;
+
+           //UPDATE BACK AND FRONT
+           back=temp;
+           temp=front;
         }
-
-        return slow.data;
-
-
+        return back;
     }
+
 
 
     public static void main(String[] args) {
 
-        int[] arr = {2, 5, 8};
- 
-        // // Creating a new Node with the value from the array
-        // Node x = new Node(arr[0],null);
-
-        // // Printing location of x and the data stored in the Node x
-        // System.out.println(x);
-        // System.out.println(x.data);
+        int[] arr = {2,5,8,9,23,65,21};
 
         Node head = convert2LL(arr);
 
-        int rel = MedianOfLinkedList(head);
+        print(head);   
 
+        head = reverseItIterative(head);
 
-        System.out.println(rel);
+        print(head);
         
     }
     
