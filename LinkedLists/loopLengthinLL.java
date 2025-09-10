@@ -1,8 +1,8 @@
 package LinkedLists;
 
-public class returnLoopStartInLL {
+public class loopLengthinLL {
 
-    public static class Node{
+     public static class Node{
         //VALUES
         int data; //data value
         Node next; //reference to next node in the LL
@@ -46,61 +46,61 @@ public class returnLoopStartInLL {
         System.out.println();
     }
 
-    public static Node findStartingPoint(Node head){
+    public static int LengthOFLLReturn(Node head){
 
-        Node slow = head;
-        Node fast = head;
-        
-        
+        Node slow=head;
+        Node fast=head;
+
         while(fast!=null && fast.next!=null){
             slow=slow.next;
-            fast= fast.next.next;
+            fast=fast.next.next;
 
-            //as soon as comman point is found 
             if(slow==fast){
-                slow=head;
 
-                while(slow!=fast){
-                    slow=slow.next;
-                    fast=fast.next;
+                Node temp=fast.next;
+                int count =1;
+
+                while(slow!=temp){
+                    temp=temp.next;
+                    count++;
                 }
 
-               return slow; 
+                return count;
+                
             }
 
+            
         }
+          
 
-
-        return  null;
+        return 0;
     }
+    
 
     public static void main(String[] args) {
-
-
-        
         int[] arr = {2,5,8,9,23,65,21};
 
         Node head = convert2LL(arr);
 
         //MAKING LOOPED LL
 
-        // // Create a LOOPED LL for testing
-        // Node temp = head;
-        // Node last = head;
+        // Create a LOOPED LL for testing
+        //Node temp = head;
 
-        // // Move last to the end
-        // while (last.next != null) {
-        //     last = last.next;
-        // }
+        Node last = head;
 
-        // // Example: connect last node back to head.next (node with value 5)
-        // last.next = head.next.next;
+        // Move last to the end
+        while (last.next != null) {
+            last = last.next;
+        }
 
-        //print(head);   
+        // Example: connect last node back to head.next (node with value 5)
+        last.next = head.next.next;
 
-        Node hehe = findStartingPoint(head);
+        // /print(head);   
 
-        System.out.println(hehe.data);
+        int hehe = LengthOFLLReturn(head);
+
+        System.out.println(hehe);
     }
-    
 }

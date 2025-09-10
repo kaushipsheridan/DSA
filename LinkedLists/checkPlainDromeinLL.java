@@ -1,6 +1,6 @@
 package LinkedLists;
 
-public class returnLoopStartInLL {
+public class checkPlainDromeinLL {
 
     public static class Node{
         //VALUES
@@ -46,61 +46,91 @@ public class returnLoopStartInLL {
         System.out.println();
     }
 
-    public static Node findStartingPoint(Node head){
+    public static boolean checkIfPal(Node head){
 
-        Node slow = head;
-        Node fast = head;
-        
-        
-        while(fast!=null && fast.next!=null){
+                                //STEP 1 - Get the mid 1(even) and mid(odd) of LL 
+        Node slow=head;
+        Node fast=head;
+        while(fast.next!=null && fast.next.next!=null){
             slow=slow.next;
-            fast= fast.next.next;
-
-            //as soon as comman point is found 
-            if(slow==fast){
-                slow=head;
-
-                while(slow!=fast){
-                    slow=slow.next;
-                    fast=fast.next;
-                }
-
-               return slow; 
-            }
-
+            fast=fast.next.next;
         }
 
 
-        return  null;
+                                //STEP 2 - Reverse the second half
+        Node newHead= reverseIt(slow.next);
+
+
+                                //STEP 3 : Compare each node until equal/unequal -> reverse back -> return true/false;
+
+        Node first = head;
+        Node second = newHead;
+
+        //we know second will reach the end and not first
+        
+        while(second!=null){
+
+            if(first.data!=second.data){
+                //reverse back new head and return true;
+                reverseIt(newHead);
+                return false;
+            }
+
+            first=first.next;
+            second=second.next;
+
+        
+        }
+
+        //revere back new head -> return true
+        reverseIt(newHead);
+        return true;
+
     }
+
+    public static Node reverseIt(Node head){
+
+        Node temp = head;
+        Node back = null;
+
+
+        while(temp!=null){
+            Node front = temp.next;
+            temp.next=back;
+
+            back = temp;
+            temp = front;
+        }
+
+        return back;
+
+    }
+
 
     public static void main(String[] args) {
 
-
-        
-        int[] arr = {2,5,8,9,23,65,21};
-
+        int[] arr = {1,2,3,1,1};
         Node head = convert2LL(arr);
 
-        //MAKING LOOPED LL
+        // //MAKING LOOPED LL
 
         // // Create a LOOPED LL for testing
-        // Node temp = head;
+        // //Node temp = head;
         // Node last = head;
-
         // // Move last to the end
         // while (last.next != null) {
         //     last = last.next;
         // }
-
         // // Example: connect last node back to head.next (node with value 5)
         // last.next = head.next.next;
 
-        //print(head);   
 
-        Node hehe = findStartingPoint(head);
+        print(head);   
 
-        System.out.println(hehe.data);
+        boolean hehe = checkIfPal(head);
+
+        System.out.println(hehe);
+        
     }
     
 }
