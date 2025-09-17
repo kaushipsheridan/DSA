@@ -32,6 +32,7 @@ public class mergeSort {
 
         //making a temp space - int array
         int[] temp = new int[arr.length];
+
         int i=start;
         int j=mid+1;
 
@@ -39,7 +40,8 @@ public class mergeSort {
         int k =start;
 
             //Compares LEFT and RIGHT array iteratively and combines in sorted order
-            while(i<=mid && j<=end){    
+            while(i<=mid && j<=end){   
+                 
                 if(arr[i]<arr[j]){
                     temp[k++]= arr[i];
                     i++;
